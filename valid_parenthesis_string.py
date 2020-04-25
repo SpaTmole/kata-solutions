@@ -30,7 +30,7 @@ def checkValidString(s: str) -> bool:
     }
     following_asteriks_stack = []
 
-    for idx, chr in enumerate(s):
+    for chr in s:
         chr_col[chr] += 1
         if chr == ')':
             if (chr_col['('] + chr_col['*']) < chr_col[')']:
@@ -50,8 +50,7 @@ def checkValidString(s: str) -> bool:
         elif chr == '*':
             if following_asteriks_stack:
                 following_asteriks_stack[-1] += 1
-        print(chr, ' -------> ', chr_col, '      last: ', following_asteriks_stack)
-    print('    ')
+
     # Poping stack for each '(' subtract at least 1 and move the rest to a previous '('
     # If there was 0 at some point - we out of options to enclose the bracket, means invalid string.
     while following_asteriks_stack:
